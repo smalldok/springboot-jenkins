@@ -2,13 +2,13 @@
 jenkins 构建、打包、远程部署springboot项目
 
 ## 远程部署（JAR包）
-远程部署的目标服务器上，一般都会有一个shell部署脚本给jenkins远程调用，它所做的事情大致如下：
-1、停止正在运行的服务(kill -9)
-2、备份（xxx.jar.20170714125400）
-3、删除发布目录中的jar文件
-4、拷贝新的jar文件到发布目录中
-5、启动项目 (java -jar)
-6、监听启动日志(tail -f)
+远程部署的目标服务器上，一般都会有一个shell部署脚本给jenkins远程调用，它所做的事情大致如下：    
+1、停止正在运行的服务(kill -9)  
+2、备份（xxx.jar.20170714125400）  
+3、删除发布目录中的jar文件  
+4、拷贝新的jar文件到发布目录中  
+5、启动项目 (java -jar)  
+6、监听启动日志(tail -f)  
 
 远程部署的目录结构：
 ```
@@ -49,7 +49,7 @@ jenkins 中设置 `Post Steps` Execute shell:
 scp $WORKSPACE/demo/target/demo*.jar smalldok@172.17.0.2:/home/smalldok/build/
 BUILD_ID=dontKillMe ssh smalldok@172.17.0.2 "/home/smalldok/springboot-jenkins-deploy.sh -u 'remote://127.0.0.1:8001/demo?profile=dev&enable_debug=false&enable_jmx=false'"
 ```
-springboot-jenkins-deploy.sh的传参采用URL方式(参考的dubbo url设计);
+springboot-jenkins-deploy.sh的传参采用URL方式(参考的dubbo url设计);  
 URL中协议头、IP这两个参数暂时还没什么用，供以后扩展吧；
 
 部署shell脚本：
@@ -303,9 +303,9 @@ run
 watch
 ```
 jenkins 配置截图
-![General](doc/image/1.png)
-![源码管理](doc/image/2.png)
-![构建触发器](doc/image/3.png)
-![Build 和 Post Steps](doc/image/4.png)
+![General](doc/image/jenkins-config1.png)
+![源码管理](doc/image/jenkins-config2.png)
+![构建触发器](doc/image/jenkins-config3.png)
+![Build 和 Post Steps](doc/image/jenkins-config4.png)
 
 参考：https://github.com/rcoli/spring-boot-jenkins.git
