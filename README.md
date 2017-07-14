@@ -52,7 +52,14 @@ BUILD_ID=dontKillMe ssh smalldok@172.17.0.2 "/home/smalldok/springboot-jenkins-d
 springboot-jenkins-deploy.sh的传参采用URL方式(参考的dubbo url设计);  
 URL中协议头、IP这两个参数暂时还没什么用，供以后扩展吧；
 
-部署shell脚本：
+```
+目标服务器上，提前建好几个目录  
+/home/smalldok/build  
+/home/smalldok/backcup  
+/home/smalldok/release  
+```
+
+部署shell脚本：  
 springboot-jenkins-deploy.sh
 ``` java
 #!/bin/sh
